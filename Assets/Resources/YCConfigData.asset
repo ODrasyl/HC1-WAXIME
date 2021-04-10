@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfcf417bceeba474b8d12501c906cef3, type: 3}
   m_Name: YCConfigData
   m_EditorClassIdentifier: 
-  gameYcId: 
+  gameYcId: 56df9f
   Vibration: 0
   VibrationDebugLog: 0
   SoundEffect: 0
@@ -27,13 +27,14 @@ MonoBehaviour:
   ABSamples: []
   RateBoxShow: 0
   InterstitialInterval: 30
-  Name: 
-  FbAppId: 
+  Name: Waxime
+  FbAppId: 257507459323517
   appleId: 
   MmpAdjust: 0
   MmpAdjustAppToken: 
-  MmpSingular: 0
-  MmpTenjin: 0
+  MmpTenjin: 1
+  AdMobAndroidAppId: 
+  AdMobIosAppId: 
   IosInterstitial: 
   IosRewarded: 
   IosBanner: 
