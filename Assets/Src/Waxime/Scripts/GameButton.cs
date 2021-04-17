@@ -67,6 +67,7 @@ namespace YsoCorp
 
         public void SetButtonScale(Button bButton)
         {
+            this.soundWaxime.PlayEffect(SoundWaxime.SOUNDBUTTONTYPE);
             bButton.gameObject.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
         }
 

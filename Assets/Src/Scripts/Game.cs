@@ -19,26 +19,37 @@ namespace YsoCorp {
                 return this._state;
             }
             set {
-                if (this._state != value) {
+                if (this._state != value)
+                {
                     this._previousState = this._state;
                     this._state = value;
+                    this.soundWaxime.ChangeMusic();
                     if (this.onStateChanged != null) {
                         this.onStateChanged(value);
                     }
-                    if (value == States.Home) {
+                    if (value == States.Home)
+                    {
+                        if (this._previousState != States.None)
+                            this.soundWaxime.PlayEffect(SoundWaxime.SOUNDHOME);
                         this.HideAllMenus();
                         this.menuHome.Display();
                         this.Reset();
-                    } else if (value == States.Playing) {
+                    } else if (value == States.Playing)
+                    {
+                        this.soundWaxime.PlayEffect(SoundWaxime.SOUNDPLAY);
                         this.ycManager.OnGameStarted(this.dataManager.GetLevel());
                         this.HideAllMenus();
                         this.menuGame.Display();
                         this.gameButton.CleanButton();
-                    } else if (value == States.Lose) {
+                    } else if (value == States.Lose)
+                    {
+                        this.soundWaxime.PlayEffect(SoundWaxime.SOUNDLOOSE);
                         this.ycManager.OnGameFinished(false);
                         this.HideAllMenus();
                         this.menuLose.Display();
-                    } else if (value == States.Win) {
+                    } else if (value == States.Win)
+                    {
+                        this.soundWaxime.PlayEffect(SoundWaxime.SOUNDVICTORY);
                         this.ycManager.OnGameFinished(true);
                         this.dataManager.NextLevel();
                         this.HideAllMenus();
@@ -122,8 +133,6 @@ namespace YsoCorp {
         {
             if (_previousState == States.None || _previousState == States.Win)
             {
-                Debug.Log("-------------------");
-                Debug.Log("Yes");
                 Map tmpMap;
                 int i = 0;
                 while ((tmpMap = this.resourcesManager.GetMap()) == this.previousMap)
@@ -131,7 +140,6 @@ namespace YsoCorp {
                     if (i > 10)
                         break;
                     i += 1;
-                    Debug.Log("Yes");
                 }
                 this.previousMap = tmpMap;
             }

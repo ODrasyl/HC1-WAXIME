@@ -12,7 +12,7 @@ namespace YsoCorp
         Circle,
     }
 
-    public class Tile : MonoBehaviour
+    public class Tile : YCBehaviour
     {
         public TileStates _tileState = TileStates.None;
         public int _player = -1;
@@ -117,17 +117,24 @@ namespace YsoCorp
             this._circle.SetActive(false);
         }
 
-        public void SelectedTile()
+        public bool SelectedTile()
         {
             if (this._tileGame._stateUse == TileStates.None || this._tileGame._stateUse == this._tileState)
-                return;
+            {
+                this.soundWaxime.PlayEffect(SoundWaxime.SOUNDERROR);
+                return false;
+            }
             if ((this._tileState == TileStates.None && this._player == -1) ||
                 this._player == 0)
             {
+                this.soundWaxime.PlayEffect(SoundWaxime.SOUNDTILESELECT);
                 this._tileGame.DecreaseStateChangeNb();
                 this.ChangeTileState(true, this._tileGame._stateUse, 0);
                 this._isChange = true;
+                return true;
             }
+            this.soundWaxime.PlayEffect(SoundWaxime.SOUNDERROR);
+            return false;
         }
 
         public void ChangeTileState(bool isChange, TileStates newState, int newPlayer)

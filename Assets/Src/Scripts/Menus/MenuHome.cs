@@ -18,6 +18,7 @@ namespace YsoCorp {
             });
             this.bSetting.onClick.AddListener(() => {
                 this.ycManager.settingManager.Show();
+                this.soundWaxime.PlayEffect(SoundWaxime.SOUNDPARAM);
             });
             this.bRemoveAds.onClick.AddListener(() => {
                 this.ycManager.inAppManager.BuyProductIDAdsRemove();

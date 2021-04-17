@@ -42,9 +42,10 @@ namespace YsoCorp
                     {
                         if (hit.collider.GetComponent<Tile>() != null)
                         {
-                            this._gameStarted = true;
                             Tile tile = hit.collider.GetComponent<Tile>();
-                            tile.SelectedTile();
+                            bool tmpStart = tile.SelectedTile();
+                            if (!this._gameStarted)
+                                this._gameStarted = tmpStart;
                         }
                     }
                 }
@@ -67,6 +68,7 @@ namespace YsoCorp
                 }
                 if (this.CheckRockPaperScissors(tileOrigin._tileState, tile._tileState))
                 {
+                    this.soundWaxime.TileSound();
                     tile.ChangeTileState(true, tileOrigin._tileState, tileOrigin._player);
                 }
             }
